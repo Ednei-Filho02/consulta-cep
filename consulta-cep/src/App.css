@@ -1,0 +1,250 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  font-family: 'Inter', sans-serif;
+  color: #172b4d;
+  background: #f3f7fd;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --azul: #2563eb;
+  --azul-hover: #1d4ed8;
+  --texto: #172b4d;
+  --texto-suave: #64748b;
+  --borda: #dce5f0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(ellipse at top left, #e0ecff 0%, transparent 45%),
+    radial-gradient(ellipse at bottom right, #e4edff 0%, transparent 40%),
+    #f7f9fc;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.container {
+  width: min(100% - 32px, 680px);
+  margin: 0 auto;
+  padding: 64px 0 40px;
+}
+
+.container > h1 {
+  margin: 0 0 12px;
+  color: var(--texto);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  text-align: center;
+}
+
+.container > p {
+  color: var(--texto-suave);
+  line-height: 1.7;
+}
+
+.container > h1 + p {
+  margin: 0 0 32px;
+  font-size: 1rem;
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 28px;
+  background: #fff;
+  border: 1px solid rgb(220 229 240 / 80%);
+  border-radius: 20px;
+  box-shadow: 0 16px 45px rgb(36 66 112 / 8%);
+}
+
+form label {
+  color: var(--texto);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+input {
+  width: 100%;
+  min-height: 54px;
+  padding: 0 16px;
+  color: var(--texto);
+  background: #fff;
+  border: 1px solid var(--borda);
+  border-radius: 10px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input::placeholder {
+  color: #94a3b8;
+}
+
+input:hover {
+  border-color: #a9bdd8;
+}
+
+input:focus {
+  border-color: var(--azul);
+  box-shadow: 0 0 0 4px rgb(37 99 235 / 12%);
+}
+
+button {
+  min-height: 52px;
+  padding: 0 22px;
+  color: white;
+  font-weight: 600;
+  background: var(--azul);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover:not(:disabled) {
+  background: var(--azul-hover);
+  box-shadow: 0 6px 16px rgb(37 99 235 / 20%);
+  transform: translateY(-1px);
+}
+
+button:focus-visible {
+  outline: 3px solid #93c5fd;
+  outline-offset: 3px;
+}
+
+button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.resultado {
+  margin-top: 24px;
+  padding: 26px;
+  overflow-wrap: anywhere;
+  background: #fff;
+  border: 1px solid var(--borda);
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgb(36 66 112 / 5%);
+  animation: aparecer 0.3s ease-out;
+}
+
+.resultado h2 {
+  margin: 0 0 24px;
+  color: var(--texto);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.resultado p {
+  margin: 0;
+  padding: 15px 0;
+  color: var(--texto-suave);
+  border-bottom: 1px solid #edf1f7;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.resultado p:last-child {
+  border-bottom: none;
+}
+
+.resultado strong {
+  display: inline-block;
+  min-width: 105px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.erro {
+  margin: 18px 0 0;
+  padding: 14px 16px;
+  color: #b42318;
+  background: #fff1f0;
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 600px) {
+  .container {
+    padding-top: 80px;
+  }
+
+  form {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    column-gap: 14px;
+    row-gap: 12px;
+  }
+
+  form label {
+    grid-column: 1 / -1;
+  }
+
+  form input {
+    min-width: 0;
+  }
+
+  form button {
+    min-width: 140px;
+  }
+}
+
+@media (max-width: 599px) {
+  .container {
+    padding-top: 42px;
+  }
+
+  form,
+  .resultado {
+    padding: 20px;
+    border-radius: 14px;
+  }
+
+  form button {
+    width: 100%;
+  }
+
+  .resultado strong {
+    display: block;
+    margin-bottom: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
